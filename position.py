@@ -123,6 +123,14 @@ class Position:
         return value
 
     def replace(self, **kwargs) -> "Position":
+        """Replaces the specified properties of the position.
+
+        Args:
+            **kwargs: Optional parameters to update the position attributes. If not provided, the current values are used.
+
+        Returns:
+            Position: A new Position object with updated attributes.
+        """
         return Position(
             ticker=kwargs.get("ticker", self.__ticker),
             idx=kwargs.get("idx", self.__idx),
@@ -135,6 +143,14 @@ class Position:
         )
 
     def __validate_stop_loss(self, stop_loss: Optional[float]) -> None:
+        """Checks the stop_loss specified is valid based on the position type.
+
+        Args:
+            stop_loss (Optional[float]): The stop loss price.
+
+        Returns:
+            None
+        """
         if stop_loss is None:
             return
 
@@ -150,6 +166,14 @@ class Position:
                 )
 
     def __validate_take_profit(self, take_profit: Optional[float]) -> None:
+        """Checks the take_profit specified is valid based on the position type.
+
+        Args:
+            take_profit (float): The take_profit price.
+
+        Returns:
+            None
+        """
         if take_profit is None:
             return
 
